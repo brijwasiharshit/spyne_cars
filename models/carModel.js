@@ -48,6 +48,11 @@ const carSchema = new mongoose.Schema({
       required: true,
     },
   },
+  postedBy: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const Car = mongoose.model("Car", carSchema);

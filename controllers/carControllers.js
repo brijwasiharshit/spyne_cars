@@ -1,24 +1,34 @@
 const Car = require("../models/carModel");
+const cloudinary = require("cloudinary");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apiFeatures");
 exports.createCar = catchAsyncErrors(async (req, res, next) => {
   req.body.user = req.user.id;
+  req.body.postedBy = req.user._id;
+
   const car = await Car.create(req.body);
+
   res.status(201).json({
     success: true,
     car,
   });
 });
 exports.getAllCars = catchAsyncErrors(async (req, res, next) => {
-  const cars = await Car.find();
+  const userId = req.user._id;
+
+  const cars = await Car.find({ postedBy: userId });
   res.status(200).json({
     success: true,
     cars,
   });
 });
 exports.getCarByName = catchAsyncErrors(async (req, res) => {
-  const apiFeatures = new ApiFeatures(Car.find(), req.query).search();
+  const userId = req.user._id;
+  const apiFeatures = new ApiFeatures(
+    Car.find({ postedBy: userId }),
+    req.query
+  ).search();
   const cars = await apiFeatures.query;
   res.status(200).json({ success: true, cars });
 });
