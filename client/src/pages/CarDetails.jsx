@@ -11,7 +11,7 @@ const CarDetails = () => {
   useEffect(() => {
     const getMyCar = async () => {
       try {
-        const res = await axios.get(`http://localhost:7777/api/v1/car/${id}`, {
+        const res = await axios.get(`http://localhost:5000/api/v1/car/${id}`, {
           headers: {
             "Content-Type": "application/json",
           },

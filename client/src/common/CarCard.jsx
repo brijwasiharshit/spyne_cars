@@ -27,7 +27,7 @@ const CarCard = ({ id, desc, title }) => {
   const handleDeleteCar = async () => {
     if (window.confirm("Are you sure you want to delete this car?")) {
       try {
-        await axios.delete(`http://localhost:7777/api/v1/car/${id}`, {
+        await axios.delete(`http://localhost:5000/api/v1/car/${id}`, {
           headers: {
             "Content-Type": "application/json",
           },

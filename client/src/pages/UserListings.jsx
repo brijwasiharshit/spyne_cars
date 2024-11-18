@@ -13,7 +13,7 @@ const UserListings = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await axios.get('http://localhost:7777/api/v1/getAllCars', {
+        const res = await axios.get('http://localhost:5000/api/v1/getAllCars', {
           withCredentials: true,
         });
        
@@ -37,7 +37,7 @@ const UserListings = () => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get('http://localhost:7777/api/v1/logout', {
+      const res = await axios.get('http://localhost:5000/api/v1/logout', {
         withCredentials: true,
       });
 

@@ -48,7 +48,7 @@ const AddCar = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:7777/api/v1/car/new",
+        "http://localhost:5000/api/v1/car/new",
         payload,
         {
           headers: { "Content-Type": "application/json" },
