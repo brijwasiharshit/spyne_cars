@@ -15,8 +15,10 @@ exports.createCar = catchAsyncErrors(async (req, res, next) => {
   });
 });
 exports.getAllCars = catchAsyncErrors(async (req, res, next) => {
+ 
   const userId = req.user._id;
-
+  // console.log(userId + "userId");
+  // console.log(req.user + "req.user");
   const cars = await Car.find({ postedBy: userId });
   res.status(200).json({
     success: true,
